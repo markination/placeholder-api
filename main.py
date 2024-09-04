@@ -8,8 +8,7 @@ import asyncio
 import logging
 from fastapi import FastAPI
 import uvicorn
-from Routes import Text
-from Routes import Number
+from Routes import Text, Number
 
 dotenv.load_dotenv()
 
