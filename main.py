@@ -9,11 +9,13 @@ import logging
 from fastapi import FastAPI
 import uvicorn
 from Routes import Text
+from Routes import Number
 
 dotenv.load_dotenv()
 
 app = FastAPI()
 app.include_router(Text.router, prefix="/text")
+app.include_router(Number.router, prefix="/number")
 
 @app.on_event("startup")
 async def startup_event():

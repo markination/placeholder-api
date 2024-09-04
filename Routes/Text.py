@@ -23,4 +23,4 @@ class StringsRouter(APIRouter):
 
 
 router = StringsRouter()
-router.post("/gibberish")(StringsRouter.on_strings_gibberish)
+router.get("/gibberish", description="Generate some gibberish")(StringsRouter.on_strings_gibberish)
