@@ -6,7 +6,7 @@ from starlette.requests import Request
 from starlette.responses import Response, JSONResponse
 import random
 import string
-
+from wonderwords import RandomSentence
 
 class StringsRouter(APIRouter):
     def __init__(self):
@@ -18,9 +18,18 @@ class StringsRouter(APIRouter):
             return JSONResponse(status_code=200, content={"message": result_str})
         except Exception as e:
             return JSONResponse(status_code=500, content={"message": f"{e}"})
+    
+    async def on_strings_sentence(request: Request):
+        try:
+            s = RandomSentence()
+            sentence = s.sentence()
+            return JSONResponse(status_code=200, content={"message": f"{sentence}"})
+        except Exception as e:
+            return JSONResponse(status_code=500, content={"message": f"{e}"})
         
         
 
 
 router = StringsRouter()
 router.get("/gibberish", description="Generate some gibberish")(StringsRouter.on_strings_gibberish)
+router.get("/sentence", description="Generate a sentence")(StringsRouter.on_strings_sentence)

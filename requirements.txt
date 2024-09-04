@@ -1,0 +1,4 @@
+fastapi
+wonderwords
+uvicorn
+python-dotenv

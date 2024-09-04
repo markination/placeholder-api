@@ -6,7 +6,6 @@ from starlette.requests import Request
 from starlette.responses import Response, JSONResponse
 import random
 
-
 class NumberRouter(APIRouter):
     def __init__(self):
         super().__init__(tags=["Strings"])  
@@ -16,9 +15,6 @@ class NumberRouter(APIRouter):
             return JSONResponse(status_code=200, content={"message": random.randint(min_number, max_number)})
         except Exception as e:
             return JSONResponse(status_code=500, content={"message": f"{e}"})
-        
-        
-
 
 router = NumberRouter()
 router.get("/random", description="Generate a random number")(NumberRouter.on_number_random)
